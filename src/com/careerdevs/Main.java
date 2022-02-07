@@ -6,33 +6,51 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-      final byte MONTHS_IN_YEARS = 12;
-      final byte PERCENT = 100;
+    final byte MONTHS_IN_YEARS = 12;
+    final byte PERCENT = 100;
+    int principal =0;
+    float monthlyInterest = 0;
+    byte years = 0;
+    int numberOFPayments = 0;
 
       Scanner scanner = new Scanner(System.in);
+      while (true) {
         System.out.print("Principal: ");
-        int principal = scanner.nextInt();
+        principal = scanner.nextInt();
+        if(principal >= 1000 && principal <= 1_000_000)
+          break;
+        System.out.println("Enter a value between 1000 and 1000000");
+      }
 
+      while (true) {
         System.out.println("Annual Interest Rate: ");
         float annualInterest = scanner.nextFloat();
-        float monthlyInterest = annualInterest / PERCENT / MONTHS_IN_YEARS;
-
+        if (annualInterest >= 1 && annualInterest <= 30) {
+        monthlyInterest = annualInterest / PERCENT / MONTHS_IN_YEARS;
+          break;
+        }
+        System.out.println("Enter a value between 1 and 30");
+      }
+      while(true) {
         System.out.println("Period (Years):");
-        byte years = scanner.nextByte();
-        int numberOFPayments = years * MONTHS_IN_YEARS;
+        years = scanner.nextByte();
+        if (years >= 1 && years <= 30) {
+          numberOFPayments = years * MONTHS_IN_YEARS;
+          break;
+        }
+      }
+        //double Mortgage = principal
+       //         * (monthlyInterest * Math.pow(1 + monthlyInterest,numberOFPayments));
+      // (Math.pow(1 + monthlyInterest, numberOFPayments)-1);
 
-        double Mortgage = principal
-                * (monthlyInterest * Math.pow(1 + monthlyInterest,numberOFPayments));
-       / (Math.pow(1 + monthlyInterest, numberOFPayments)-1);
-
-        String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgage);
-        System.out.println("Mortgage: " + mortgageFormatted);
+                // String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgage);
+       // System.out.println("Mortgage: " + mortgageFormatted);
     }
 
 }
 
 //Mortgage Calculator
-//Principal:10000 Mortgage amount
+//Principal:10000 = Mortgage amount
 //Annual Interest Rate 03.92 / by 12 = monthly rate get
 //Period(Years):30
 //Mortgage: $472.81 * 12 = Annual rate
@@ -151,4 +169,5 @@ public class Main {
 
 //NextLine you can add more than one integer
 //String name = scanner.nextLine();
+
 
