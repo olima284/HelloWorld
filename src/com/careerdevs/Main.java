@@ -19,7 +19,7 @@ public class Main {
         principal = scanner.nextInt();
         if(principal >= 1000 && principal <= 1_000_000)
           break;
-        System.out.println("Enter a value between 1000 and 1000000");
+        System.out.println(" value between 1000 and 1000000");
       }
 
       while (true) {
